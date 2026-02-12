@@ -1,0 +1,19 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    ssr: true,
+    outDir: 'dist/server',
+    rollupOptions: {
+      input: 'src/entry-server.jsx',
+      output: {
+        format: 'es'
+      }
+    }
+  },
+  ssr: {
+    noExternal: ['react', 'react-dom', 'lucide-react']
+  }
+})
